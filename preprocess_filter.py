@@ -5,6 +5,7 @@ import copy
 import cv2
 from PIL import Image
 from PIL import ImageEnhance
+from PIL.Image import Quantize
 import os
 import glob
 from matplotlib import cm
@@ -32,10 +33,20 @@ def apply_filter(filepath):
 	#quantizing to remove shadow
 	# test to see if this works across folders
 	q = Image.fromarray(np.uint8(datapoints*255))
-	enhancer = ImageEnhance.Brightness(q)
-	q = enhancer.enhance(4)
-	q = q.quantize(2)
+	q = q.quantize(2, method = Quantize.FASTOCTREE)
 	datapoints_q = np.array(q)
+
+	quant_sum = np.array(len(datapoints_q[1]))
+	print(quant_sum.shape)
+	for row in datapoints_q:
+		print(row.shape)
+		quant_sum += row
+	print(quant_sum)
+	exit()
+
+
+
+
 
 	for y, row in enumerate(datapoints_q):
 		zeroes = np.where(row == 1)
