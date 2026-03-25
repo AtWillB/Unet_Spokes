@@ -50,7 +50,7 @@ import numpy as np
 
 
 aug = alb.Compose([
-    alb.ShiftScaleRotate(scale_limit=0, rotate_limit=0, shift_limit_y = 0, p=1),
+    alb.ShiftScaleRotate(shift = (-0.15, 0.15), scale_limit=0, rotate_limit=0, shift_limit_y = 0, p=1),
     alb.RandomBrightnessContrast (brightness_limit=0.1, contrast_limit=0.1, brightness_by_max=True, always_apply=True, p=1)], 
     additional_targets={'image' : 'mask'}
 )

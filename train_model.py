@@ -26,7 +26,7 @@ def main():
     parser.add_argument("rpjb_list_path", help = "filepath to list of rpjb files")
     parser.add_argument("mask_list_path", help = "filepath to list of mask files")
     parser.add_argument("epoch_num", help = "the number of epochs to train the model for")
-    parser.add_argument("model_path", help = "filepath to where you would like the model to be saved to. Must save the File as a .tf file")
+    parser.add_argument("model_path", help = "filepath to where you would like the model to be saved to. Must save the File as a .h5 file")
 
 
     if len(sys.argv) < 4:
@@ -42,7 +42,7 @@ def main():
     model_path = args.model_path
 
 
-    if ".tf" not in Path(model_path).name:
+    if ".h5" not in Path(model_path).name:
         print(f"Your model_path input {model_path} is not valid. Please make sure the path includes the files name and ends in .tf")
         parser.print_help()
         sys.exit(1)
@@ -73,7 +73,7 @@ def main():
 
 
 if __name__ == "__main__":
-	 	main()
+        main()
 
 
 

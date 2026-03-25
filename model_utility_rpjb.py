@@ -110,7 +110,7 @@ def data_gather(X, Y, rpjb_list_path, mask_list_path):
             X.append(pixel_values)
 
     for mask_path in mask_list:
-        mask = cv2.imread(mask_path, cv2.IMREAD_GRAYSCALE)
+        mask = np.load(mask_path)
         mask[mask != 0] = 1
         Y.append(mask)
 
@@ -180,7 +180,7 @@ def model_testing(model, testing_folder, num_of_images):
         plt.imshow(pixel_values, cmap="gray")
         plt.show()
 
-        img = img.reshape((1, 160, 736))    
+        img = pixel_values.reshape((1, 160, 736))    
         prediction = model.predict(img)
         prediction = prediction.reshape((160, 736))
 

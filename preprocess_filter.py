@@ -185,7 +185,7 @@ def buffer_image(pixel_values, propper_x, propper_y, coords_tuple):
 
 # saves the new image to the given path with no figure marks
 def save_image(new_path, filt_image):
-    plt.imsave(fname=new_path, arr=filt_image, cmap='gray', format='png')
+    plt.imsave(fname=new_path, arr=filt_image, cmap='gray', format='png', origin = "lower")
 
 
 
